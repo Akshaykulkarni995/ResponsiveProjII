@@ -1,4 +1,3 @@
-import React from "react";
 import { Box, Grid, styled } from "@mui/material";
 import { caseInfo } from "../../services/grossing-service";
 import ActionPanel from "../action-panel/action-panel";
@@ -6,13 +5,23 @@ import EmbeddedForms from "../embedded-forms/embedded-forms";
 
 import SpecimenCardLayout from "../specimen-card/specimen-card-layout";
 
+import {
+  AddCircleOutline,
+  VerifiedUserOutlined,
+  RemoveCircleOutline,
+  Search,
+} from "@mui/icons-material";
+import { IButtons } from "../../types/ActionPanelData";
+
 const Container = styled(Box)`
   display: flex;
   height: 100%;
   overflow: hidden;
   width: 100%;
   ${({ theme }) => theme.breakpoints.down("md")} {
-    margin-top: 1rem;
+    height: auto;
+    margin: ${({ theme }) => theme.spacing(2, 0)};
+    padding-bottom: ${({ theme }) => theme.spacing(2)};
     border-top: 1px solid #d5d5d5;
   }
 `;
@@ -35,7 +44,28 @@ const PageContainer = styled(Grid)`
     overflow: auto;
   }
 `;
+
 const SpecimenContainer = () => {
+  const BtnDataList: IButtons[] = [
+    {
+      title: "ADD",
+      icon: <AddCircleOutline />,
+    },
+    {
+      title: "QA EVENTS",
+      icon: <VerifiedUserOutlined color="primary" />,
+      badgeCount: 1,
+    },
+    {
+      title: "AUDIT",
+      icon: <Search />,
+    },
+    {
+      title: "CANCEL",
+      icon: <RemoveCircleOutline />,
+    },
+  ];
+
   return (
     <PageContainer container>
       <Grid
@@ -54,7 +84,7 @@ const SpecimenContainer = () => {
             <EmbeddedForms />
           </FormArea>
           <ActionArea>
-            <ActionPanel />
+            <ActionPanel buttons={BtnDataList} />
           </ActionArea>
         </Container>
       </Grid>

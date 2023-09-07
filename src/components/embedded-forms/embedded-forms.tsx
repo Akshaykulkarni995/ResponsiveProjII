@@ -15,7 +15,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { IFormData, patientData } from "../../services/EmbeddedFormsData";
+import { patientData } from "../../services/EmbeddedFormsData";
 
 const DataContainer = styled(Box)`
   width: 50%;
@@ -56,7 +56,7 @@ const Toggle = styled(FormControlLabel)`
   top: 0.625rem;
 `;
 
-const EmbeddedForms: React.FC<IFormData> = () => {
+const EmbeddedForms = () => {
   const [cData, setCData] = useState("");
   const [labData, setLabData] = useState("");
   const [code, setCodes] = useState("");

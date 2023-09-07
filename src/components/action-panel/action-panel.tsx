@@ -1,18 +1,16 @@
 import React from "react";
 import { Badge, Box, Button, styled } from "@mui/material";
-import {
-  AddCircleOutline,
-  VerifiedUserOutlined,
-  Print,
-  RemoveCircleOutline,
-  Search,
-} from "@mui/icons-material";
+import { Print } from "@mui/icons-material";
+import { ActionPanelProps, IButtons } from "../../types/ActionPanelData";
 
 const ActionButtonWrap = styled(Box)`
   display: flex;
   flex-direction: column;
   height: 100%;
   padding: ${({ theme }) => theme.spacing(2)};
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    padding-bottom: 0;
+  }
 `;
 const ActionButton = styled(Button)`
   border-color: transparent;
@@ -38,29 +36,28 @@ const ConfirmWrap = styled(Box)`
   padding-top: ${({ theme }) => theme.spacing(2)};
 `;
 
-const ActionPanel = () => {
+const ActionPanel: React.FC<ActionPanelProps> = ({ buttons }) => {
   return (
     <ActionButtonWrap>
       <ActionWrap>
-        <ActionButton variant="outlined" startIcon={<AddCircleOutline />}>
-          ADD
-        </ActionButton>
-        <ActionButton
-          variant="outlined"
-          startIcon={
-            <Badge badgeContent={1} color="primary">
-              <VerifiedUserOutlined color="primary" />
-            </Badge>
-          }
-        >
-          QA EVENTS
-        </ActionButton>
-        <ActionButton variant="outlined" startIcon={<Search />}>
-          AUDIT
-        </ActionButton>
-        <ActionButton variant="outlined" startIcon={<RemoveCircleOutline />}>
-          CANCEL
-        </ActionButton>
+        {buttons.map((btn: IButtons) => {
+          return (
+            <ActionButton
+              variant="outlined"
+              startIcon={
+                btn.badgeCount ? (
+                  <Badge badgeContent={btn.badgeCount} color="primary">
+                    {btn.icon}
+                  </Badge>
+                ) : (
+                  <>{btn.icon}</>
+                )
+              }
+            >
+              {btn.title}
+            </ActionButton>
+          );
+        })}
       </ActionWrap>
       <ConfirmWrap>
         <ConfirmationButton variant="outlined" startIcon={<Print />}>
