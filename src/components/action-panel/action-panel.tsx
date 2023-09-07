@@ -2,7 +2,7 @@ import React from "react";
 import { Badge, Box, Button, styled } from "@mui/material";
 import {
   AddCircleOutline,
-  GppGood,
+  VerifiedUserOutlined,
   Print,
   RemoveCircleOutline,
   Search,
@@ -49,7 +49,7 @@ const ActionPanel = () => {
           variant="outlined"
           startIcon={
             <Badge badgeContent={1} color="primary">
-              <GppGood color="primary" />
+              <VerifiedUserOutlined color="primary" />
             </Badge>
           }
         >

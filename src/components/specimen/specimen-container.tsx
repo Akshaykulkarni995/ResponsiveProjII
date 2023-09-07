@@ -43,12 +43,12 @@ const SpecimenContainer = () => {
         height={{ sm: "auto" }}
         maxHeight={{ md: "100%" }}
         md={6}
-        sm={12}
+        xs={12}
         xl={7}
       >
         <SpecimenCardLayout id="specimen-card-layout" caseInfo={caseInfo} />
       </Grid>
-      <Grid item sm={12} md={6} xl={5} maxHeight="100%">
+      <Grid item xs={12} md={6} xl={5} maxHeight="100%">
         <Container>
           <FormArea>
             <EmbeddedForms />

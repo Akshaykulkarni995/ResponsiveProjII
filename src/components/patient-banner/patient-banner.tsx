@@ -24,7 +24,6 @@ const PatientDetailsCardContainer = styled(Grid)`
 
 const PatientBannerContainer = styled(Card)`
   border-radius: 0;
-  box-shadow: none;
 `;
 
 const PatientContent = styled(CardContent)`
@@ -47,7 +46,7 @@ export function PatientBanner({ id = "patient" }: any) {
   };
 
   return (
-    <PatientBannerContainer id={id}>
+    <PatientBannerContainer id={id} elevation={0}>
       <PatientContent id={`${id}-content`}>
         <PatientDetails id={`${id}-details`}>
           <Grid container spacing={2}>

@@ -1,6 +1,6 @@
-import * as React from "react";
+import React from "react";
 import {
-  AppBar,
+  AppBar as MUIAppBar,
   Box,
   styled,
   Toolbar,
@@ -12,7 +12,7 @@ import SearchInput from "../search/search";
 
 import brandLogo from "../../assets/images/Clinisys_logo_bk_rgb.svg";
 
-const Appbar = styled(AppBar)`
+const AppBar = styled(MUIAppBar)`
   background-color: ${({ theme }) => theme.palette.common.black};
   height: 4rem;
 `;
@@ -82,7 +82,7 @@ const UserProfile = styled(Box)`
 `;
 const ApplicationHeader = () => {
   return (
-    <Appbar
+    <AppBar
       id="app-header"
       aria-describedby="app-header"
       position="static"
@@ -101,7 +101,7 @@ const ApplicationHeader = () => {
               <img src={brandLogo} alt="Clinisys" />
             </BrandLogo>
 
-            <ProductName>
+            <ProductName display={{ xs: "none", md: "flex" }}>
               <Typography variant="h6">Specimen Processing</Typography>
             </ProductName>
           </BrandDetails>
@@ -122,7 +122,7 @@ const ApplicationHeader = () => {
           </Tooltip>
         </UserProfile>
       </ToolBar>
-    </Appbar>
+    </AppBar>
   );
 };
 

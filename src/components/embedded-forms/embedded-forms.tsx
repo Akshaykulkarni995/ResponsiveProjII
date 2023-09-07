@@ -32,8 +32,7 @@ const FormContainer = styled(Box)`
   flex-direction: column;
   flex: 1 1 auto;
   overflow: auto;
-  margin: ${({ theme }) => theme.spacing(1, 0)};
-  padding: ${({ theme }) => theme.spacing(1, 3, 0, 3)};
+  padding: ${({ theme }) => theme.spacing(1, 3, 2, 3)};
 `;
 
 const Label = styled(Typography)`

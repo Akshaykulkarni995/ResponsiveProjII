@@ -38,8 +38,7 @@ const CardHighlighter = styled(Box, {
   shouldForwardProp: (prop) => prop !== "selected",
 })<{ selected: boolean }>`
   border-radius: 16px 0px 0px 16px;
-  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
-    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  box-shadow: ${({ theme }) => theme.shadows[4]};
   background: ${({ selected }) =>
     selected ? `#2E7D32` : `rgba(0, 0, 0, 0.38)`};
   width: 1rem;
@@ -57,8 +56,6 @@ const Root = styled(MUICard, {
 })<{ selected: boolean }>`
   border-radius: 0;
   border: solid 1px ${({ theme }) => theme.palette.divider};
-  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
-    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
   flex: 0 0 auto;
   width: calc(100% - 16px);
   background-color: ${({ selected }) => (selected ? "#e4f2fe" : "#FFFFFF")};
@@ -86,7 +83,7 @@ export function Card({ id, indent = 1, specimen }: SpecimenCardProps) {
         {hasChildren && (
           <CardHighlighter selected={!!(selectedId === id)}></CardHighlighter>
         )}
-        <Root id={id} selected={!!(selectedId === id)}>
+        <Root id={id} selected={!!(selectedId === id)} elevation={4}>
           <Stack>
             <Stack alignItems="center" direction="row" padding={1} spacing={1}>
               <Stack
@@ -112,7 +109,7 @@ export function Card({ id, indent = 1, specimen }: SpecimenCardProps) {
                 justifyContent="flex-end"
                 spacing={2}
               >
-                <Chip label={specimen.status} size="small"></Chip>
+                <Chip label={specimen.status} size="small" variant="outlined" />
                 <FontAwesomeIcon
                   icon={faFileImage}
                   size="lg"

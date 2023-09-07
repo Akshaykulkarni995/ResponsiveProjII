@@ -18,11 +18,6 @@ const CardHeader = styled(Stack)`
     ${({ theme }) => theme.spacing(2)} ${({ theme }) => theme.spacing(3)};
 `;
 
-const InfoIcon = styled(FontAwesomeIcon)`
-  font-size: 0.5rem;
-  position: absolute;
-`;
-
 const CardContainer = styled(Stack)`
   max-height: 100%;
 `;
@@ -56,8 +51,8 @@ export function CardLayout({ caseInfo, id }: CardLayoutProps) {
           <ToggleButton value="specimens">Specimens</ToggleButton>
           <ToggleButton value="derivatives">Derivatives</ToggleButton>
         </ToggleButtonGroup>
-        <Typography>
-          0 OF 3 POTS COMPLETE <InfoIcon fixedWidth icon={faInfoCircle} />
+        <Typography display="flex">
+          0 OF 3 POTS COMPLETE <FontAwesomeIcon size="xs" icon={faInfoCircle} />
         </Typography>
       </CardHeader>
 
